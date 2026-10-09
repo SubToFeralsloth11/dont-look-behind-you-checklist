@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DON'T LOOK BEHIND YOU — Build Checklist</title>
+<style>
+  body { background:#0c0d0e; color:#d6d3cc; font:16px/1.5 -apple-system, "Segoe UI", sans-serif; max-width:820px; margin:40px auto; padding:0 20px; }
+  h1 { letter-spacing:.12em; font-weight:700; color:#e8e4dc; margin-bottom:4px; }
+  .sub { color:#7d7a74; margin-top:0; }
+  .bar { height:10px; background:#222; border-radius:5px; overflow:hidden; margin:18px 0 6px; }
+  .bar > div { height:100%; background:#8a1c1c; }
+  h2 { font-size:17px; margin:28px 0 6px; border-bottom:1px solid #2a2a2a; padding-bottom:4px; }
+  h2.done { color:#7fae6e; }
+  ul { list-style:none; padding-left:4px; margin:0; }
+  li { padding:2px 0; }
+  li.done { color:#8f8c86; }
+  li.done::before { content:"\2611  "; color:#7fae6e; }
+  li:not(.done)::before { content:"\2610  "; color:#555; }
+</style>
+</head>
+<body>
+<h1>DON'T LOOK BEHIND YOU</h1>
+<p class="sub">Build checklist — every stage and feature. Checked = implemented and tested in game.</p>
+<div class="bar"><div id="fill"></div></div>
+<p id="count" class="sub"></p>
+
+<h2>Stage 1 — Project inspection &amp; architecture</h2>
+<ul>
+  <li>Godot 4.7 project created (renderer, physics, audio buses, input map)</li>
+  <li>Folder architecture (scenes/scripts/assets/audio/levels/data/docs)</li>
+  <li>Target machine &amp; 60 FPS acceptance test defined</li>
+  <li>Headless test runner</li>
+</ul>
+
+<h2>Stage 2 — Player &amp; interaction system</h2>
+<ul>
+  <li>First-person controller (walk, sprint, crouch, head bob, lean-free camera)</li>
+  <li>Stamina &amp; breathing-driven sprint</li>
+  <li>Interaction raycast + small prompt</li>
+  <li>Doors (hinged, physical, lockable)</li>
+  <li>Inventory (grid GUI, items, keycards, documents)</li>
+  <li>Flashlight with battery</li>
+  <li>Hiding spots (lockers / under desks)</li>
+  <li>Pause menu</li>
+  <li>Settings menu (graphics presets, audio, mouse)</li>
+</ul>
+
+<h2>Stage 3 — Facility environment prototype</h2>
+<ul>
+  <li>Modular kit: walls, floors, ceilings, doorways, corridors</li>
+  <li>Office wing (B1)</li>
+  <li>Maintenance tunnels &amp; vent crawlspaces</li>
+  <li>Long sightlines that stretch into the distance</li>
+  <li>Theater-like auditorium room</li>
+</ul>
+
+<h2>Stage 4 — Asset acquisition &amp; original assets</h2>
+<ul>
+  <li>Asset registry (source, license, polycount, texture size)</li>
+  <li>CC0 PBR textures (concrete, metal, tiles, rust, wet)</li>
+  <li>CC0 props (furniture, equipment)</li>
+  <li>Original props: generators, server racks, keycard readers, CCTV cameras, elevator</li>
+  <li>M1911 pistol as story prop</li>
+</ul>
+
+<h2>Stage 5 — Lighting &amp; materials</h2>
+<ul>
+  <li>PBR materials with roughness / normal maps</li>
+  <li>Decals: dirt, water damage, blood, scratches</li>
+  <li>Flickering &amp; emergency lighting</li>
+  <li>Volumetric fog / dust (preset dependent)</li>
+  <li>Power-off / power-on lighting states</li>
+</ul>
+
+<h2>Stage 6 — Environmental audio system</h2>
+<ul>
+  <li>Layer 1 bed: HVAC, hum, distant machinery, structure groans</li>
+  <li>Layer 2 zone sounds: lab, basement water/pipes, office</li>
+  <li>Layer 3 player: surface-based footsteps, clothing, breathing</li>
+  <li>Layer 4 threat sounds</li>
+  <li>3D positional audio with distance filtering</li>
+  <li>Occlusion (muffled through walls, clear through doorways)</li>
+  <li>Reverb zones per room</li>
+  <li>Silence system (hum drops out)</li>
+  <li>Dynamic mix (hiding, running, danger)</li>
+  <li>Sparse music stingers</li>
+</ul>
+
+<h2>Stage 7 — Breathing system</h2>
+<ul>
+  <li>Breathing states: faint, distant, near, directly behind, extremely close</li>
+  <li>Non-repeating variations (rhythm, distance, pan, reverb)</li>
+  <li>Turn-around detection with consequences</li>
+  <li>Some breathing events alter the environment</li>
+</ul>
+
+<h2>Stage 8 — Security camera system</h2>
+<ul>
+  <li>Security room with monitor bank</li>
+  <li>Camera switching (live feeds)</li>
+  <li>Remote observation &amp; route finding</li>
+  <li>Impossible footage: player seen somewhere else</li>
+  <li>Subject 13 behind the player on camera</li>
+</ul>
+
+<h2>Stage 9 — Subject 13 model &amp; animation</h2>
+<ul>
+  <li>Original creature model (unnatural proportions, detailed surface)</li>
+  <li>Skeleton &amp; animations: idle, standing, looking, walking, slow move, searching</li>
+  <li>Animations: sudden move, react, appear/disappear, pursuit, environmental interaction</li>
+</ul>
+
+<h2>Stage 10 — Subject 13 AI</h2>
+<ul>
+  <li>State machine: idle, observing, stalking, hiding, searching, manifesting, pursuing, disappearing</li>
+  <li>Stops when observed / watches from distance</li>
+  <li>Appears where player previously was</li>
+  <li>Creature footsteps &amp; breathing (3D)</li>
+  <li>Death sequence + checkpoint reload</li>
+</ul>
+
+<h2>Stage 11 — Environmental anomaly system</h2>
+<ul>
+  <li>Authored horror event framework (ID, trigger, effect, intensity, repeat)</li>
+  <li>Lights off, doors, objects moving, footsteps</li>
+  <li>Hallway stretching, rooms changing, signs changing</li>
+  <li>Hallucinations</li>
+</ul>
+
+<h2>Stage 12 — Story &amp; environmental storytelling</h2>
+<ul>
+  <li>Documents / notes reader</li>
+  <li>Terminals &amp; audio recordings with subtitles</li>
+  <li>Gore &amp; evidence placement (balanced)</li>
+  <li>Survival rules discovered through notes and consequences</li>
+</ul>
+
+<h2>Stage 13 — Full level progression</h2>
+<ul>
+  <li>Act 1 — The Facility (restore power, reach elevator)</li>
+  <li>Act 2 — B2 (three generators, breathing)</li>
+  <li>Act 3 — Security (CCTV, impossible footage)</li>
+  <li>Act 4 — The Experiment (labs, research history)</li>
+  <li>Act 5 — Reality Breakdown (changed areas)</li>
+  <li>Act 6 — The Rules</li>
+  <li>Objectives HUD &amp; checkpoints / save system</li>
+</ul>
+
+<h2>Stage 14 — Final escape sequence</h2>
+<ul>
+  <li>Act 7 — keycards, power, emergency elevator</li>
+  <li>Surface: sunlight, trees, road</li>
+  <li>Phone call — "Don't turn around."</li>
+  <li>SECURITY CAMERA 27 — ONLINE → cut to black</li>
+</ul>
+
+<h2>Stage 15 — Audio polish</h2>
+<ul><li>Mix pass, variations audit, levels per zone</li></ul>
+
+<h2>Stage 16 — Visual polish</h2>
+<ul><li>Post-processing, color grade, decal density, screenshot review</li></ul>
+
+<h2>Stage 17 — Performance optimization</h2>
+<ul>
+  <li>Graphics presets Low / Medium / High / Ultra</li>
+  <li>Occlusion culling, visibility ranges / LOD, shadow distances</li>
+  <li>60 FPS measured in heavy scenes on target machine</li>
+</ul>
+
+<h2>Stage 18 — Full playthrough testing</h2>
+<ul><li>Automated start-to-end playthrough completes</li></ul>
+
+<h2>Stage 19 — Bug fixing</h2>
+<ul><li>All found bugs fixed</li></ul>
+
+<h2>Stage 20 — Final polish &amp; release preparation</h2>
+<ul>
+  <li>macOS export preset &amp; build</li>
+  <li>Credits &amp; asset attributions</li>
+</ul>
+
+<script>
+  document.querySelectorAll("ul").forEach(ul => {
+    const items = ul.querySelectorAll("li");
+    if (items.length && [...items].every(li => li.classList.contains("done")))
+      ul.previousElementSibling.classList.add("done");
+  });
+  const all = document.querySelectorAll("li"), done = document.querySelectorAll("li.done");
+  document.getElementById("fill").style.width = (100 * done.length / all.length) + "%";
+  document.getElementById("count").textContent = done.length + " / " + all.length + " features complete";
+</script>
+</body>
+</html>
